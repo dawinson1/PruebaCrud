@@ -1,0 +1,67 @@
+﻿@using PruebaCrud.Models.DTO
+@model ClienteDTO
+@{
+    ViewData["Title"] = "Crear Cliente";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Crear Cliente</h1>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    
+<form asp-controller="Home" asp-action="Crear">
+    <div class="row g-3">
+
+        <div class="col-sm-6 mb-3">
+            <label asp-for="Docu_cli" class="form-label"></label>
+            <input type="text" asp-for="Docu_cli" class="form-control" />
+            <span asp-validation-for="Docu_cli" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-6">
+            <label asp-for="Tip_ide" class="form-label"></label>
+            <select class="form-select" asp-for="Tip_ide">
+                @foreach (var item in Model.tipos_Ide)
+                {
+                    <option value="@item.Tip_ide">@item.Nom_identi </option>
+                }
+            </select>
+            <span asp-validation-for="Tip_ide" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-6">
+            <label asp-for="Nombres" class="form-label"></label>
+            <input type="text" asp-for="Nombres" class="form-control" />
+            <span asp-validation-for="Nombres" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-6">
+            <label asp-for="Apellidos" class="form-label"></label>
+            <input type="text" asp-for="Apellidos" class="form-control" />
+            <span asp-validation-for="Apellidos" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-4">
+            <label asp-for="Est_cli" class="form-label"></label>
+            <select class="form-select" asp-for="Est_cli">
+                @foreach (var item in Model.estados_Cli)
+                {
+                    <option value="@item.Est_Cli">@item.Nom_est </option>
+                }
+            </select>
+            <span asp-validation-for="Est_cli" class="text-danger"></span>
+        </div>
+        
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Crear</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancelar </a>
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"></partial>
+}
